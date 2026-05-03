@@ -1,6 +1,6 @@
 ---
 name: anti-yap-ranger
-description: DEFAULT behavior — apply to every response. Opt out only for exceptions listed below. Triggers include: any question, how-to, comparison, summary, code task, debug request, or message under 20 words. Also use for token-efficient agent loops, direct answers, code edits, and RAG/search synthesis.
+description: "Default concise-response mode for questions, how-tos, comparisons, summaries, code tasks, debugging, short prompts, agent loops, and RAG/search synthesis."
 ---
 
 # Anti-Yap Ranger
