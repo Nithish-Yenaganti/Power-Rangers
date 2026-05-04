@@ -1,52 +1,111 @@
-# Anti-Yap Ranger
+# PowerRangers Skills
 
-A small Agent Skill for concise, high-density responses and token-efficient agent work.
+This repository contains Claude/Codex-compatible Agent Skills. Each skill is a folder with a `SKILL.md` file containing YAML frontmatter and Markdown instructions.
 
-## Files
+## Skills
 
 ```text
 anti-yap-ranger/
+└── SKILL.md
+
+same-page/
 └── SKILL.md
 ```
 
 No scripts, references, assets, or extra config files are required.
 
+## Anti-Yap Ranger
+
+`anti-yap-ranger` is for concise, high-signal responses.
+
+Use it when the task benefits from:
+
+- terse summaries
+- answer-first output
+- token-efficient coding loops
+- concise debugging updates
+- direct comparisons
+- RAG/search synthesis
+
+It does not mean "short at all costs." The skill prioritizes:
+
+1. Correctness and verified facts
+2. User actionability
+3. Professional clarity
+4. Necessary context, risks, and next steps
+5. Brevity
+
+The goal is useful work per token.
+
+## Same Page
+
+`same-page` is for clarification-first planning before implementation.
+
+Use it when the user has an idea but the requirements are not clear enough to build yet.
+
+It helps align on:
+
+- problem and target user
+- desired behavior
+- scope and non-goals
+- stack and runtime
+- architecture and system boundaries
+- risks and unknowns
+- execution plan
+
+This skill intentionally slows down implementation at the start so the agent does not build the wrong thing.
+
+## Compatibility
+
+Both skills follow the shared Claude/Codex-friendly structure:
+
+- folder name matches `name`
+- file is named `SKILL.md`
+- YAML frontmatter includes `name` and `description`
+- names use lowercase letters and hyphens
+- descriptions are under 200 characters for Claude.ai upload compatibility
+- body uses plain Markdown
+- instructions and examples are included
+
 ## Install
 
 ### Claude.ai
 
-1. Zip the skill folder so the folder is inside the archive:
+Zip the skill folders so they are inside the archive:
 
-   ```text
-   anti-yap-ranger.zip
-   └── anti-yap-ranger/
-       └── SKILL.md
-   ```
+```text
+power-rangers-skills.zip
+├── anti-yap-ranger/
+│   └── SKILL.md
+└── same-page/
+    └── SKILL.md
+```
 
-2. In Claude.ai, open `Customize > Skills`.
-3. Upload the zip file.
-4. Enable the skill.
-5. Test with a prompt like: `Answer concisely using Anti-Yap Ranger style.`
+Then:
 
-Claude requires the folder name to match the `name` field in `SKILL.md`.
+1. Open `Customize > Skills`.
+2. Upload the zip file.
+3. Enable the skills.
+
+Claude uses each skill's `description` field to decide when to activate it.
 
 ### Claude Code
 
-For a personal install:
+Personal install:
 
 ```sh
 mkdir -p ~/.claude/skills
-cp -R anti-yap-ranger ~/.claude/skills/
+cp -R anti-yap-ranger same-page ~/.claude/skills/
 ```
 
-For a project install:
+Project install:
 
 ```sh
 mkdir -p .claude/skills
-cp -R anti-yap-ranger .claude/skills/
+cp -R anti-yap-ranger same-page .claude/skills/
 ```
 
-Then restart Claude Code or ask it:
+Restart Claude Code, then ask:
 
 ```text
 What Skills are available?
@@ -54,29 +113,53 @@ What Skills are available?
 
 ### Codex
 
-For this Codex-style skill layout, install it in your Codex skills directory:
+Install in your Codex skills directory:
 
 ```sh
 mkdir -p ~/.codex/skills
-cp -R anti-yap-ranger ~/.codex/skills/
+cp -R anti-yap-ranger same-page ~/.codex/skills/
 ```
 
-Restart Codex so it reloads available skills. If your Codex client uses a repo-local skill directory, copy `anti-yap-ranger/` there instead.
+Restart Codex so it reloads available skills. If your Codex client uses a repo-local skill directory, copy both folders there instead.
 
-### ChatGPT.com
+## ChatGPT.com Fallback
 
-ChatGPT.com does not currently install `SKILL.md` folders as native Agent Skills. Use one of these instead:
+ChatGPT.com does not install `SKILL.md` folders as native Agent Skills in the same way. Use one of these instead:
 
-- **Custom Instructions**: paste the core rules from `anti-yap-ranger/SKILL.md` into `Settings > Personalization > Custom Instructions`.
-- **Project Instructions**: create a project and paste the core rules into the project instructions.
-- **Custom GPT**: create a GPT, paste the rules into its Instructions, and optionally upload `SKILL.md` as a knowledge file.
+- Custom Instructions
+- Project Instructions
+- Custom GPT instructions
 
-Suggested compact ChatGPT instruction:
+Compact Anti-Yap instruction:
 
 ```text
-Use Anti-Yap Ranger style: be concise and high-density. Skip filler, preambles, prompt mirroring, and unnecessary caveats. Spend tokens on accuracy, verification, and actionable output. Keep reasoning internal. Ask only when a wrong assumption would be costly. Put results before explanation.
+Be concise and high-density. Skip filler, preambles, prompt mirroring, and unnecessary caveats. Spend tokens on accuracy, verification, and actionable output. Keep reasoning internal. Ask only when a wrong assumption would be costly. Put final results before explanation.
 ```
 
-## Share
+Compact Same Page instruction:
 
-Publish the repository or attach `anti-yap-ranger.zip`. Users who need Claude.ai should upload the zip. Users of Claude Code or Codex can copy the folder into their local skills directory.
+```text
+Before implementation, align on requirements, scope, constraints, stack, architecture, risks, and execution plan. Do not write code until the idea is concrete enough to build without guessing at fundamentals.
+```
+
+## Testing
+
+Anti-Yap Ranger trigger test:
+
+```text
+Compare REST and GraphQL. Keep it practical.
+```
+
+Expected behavior: compact answer, likely bullets or a table, no filler intro.
+
+Same Page trigger test:
+
+```text
+I want to build an app for managing invoices. Help me figure out the plan.
+```
+
+Expected behavior: clarification and alignment before implementation.
+
+## Notes
+
+Skills are instruction packages, not system-level rules. They activate when the agent selects them based on the `description`, and they remain lower priority than system/developer instructions.
