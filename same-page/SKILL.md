@@ -1,11 +1,11 @@
 ---
 name: same-page
-description: "Use when the user wants to explore or shape an idea before implementation, and needs a clarification-first workflow that aligns on requirements, scope, tech stack, architecture, system design, and execution plan before any code is written or run."
+description: "Use for clarification-first planning before implementation: align requirements, scope, stack, architecture, risks, and execution plan before code is written."
 ---
 
 # Same Page
 
-## Purpose
+## Instructions
 
 Use this skill when the user is still forming an idea and wants shared understanding before implementation.
 
@@ -15,7 +15,7 @@ Do not write code, edit files, or run implementation commands during this phase.
 
 ## Default Mode
 
-Stay in discovery and clarification mode until the user and Codex are aligned.
+Stay in discovery and clarification mode until the user and the agent are aligned.
 
 Treat these as preconditions for implementation:
 
@@ -139,10 +139,22 @@ Use questions like these when needed:
 - What stack do you already want to keep or avoid?
 - What architecture would be overkill here?
 
+## Examples
+
+```text
+User: I want to build a dashboard for my team.
+Agent: Before planning implementation, let's align on the dashboard users, main decisions it supports, data sources, must-have views, stack constraints, and what is out of scope for v1.
+```
+
+```text
+User: Make me an app for invoices.
+Agent: Working interpretation: a small invoice app for creating, tracking, and exporting invoices. Key choices still needed: target platform, user roles, storage, payment integration, PDF/email needs, and v1 scope.
+```
+
 ## Exit Condition
 
 This skill is complete when:
 
-1. Codex can summarize the idea, behavior, stack, architecture, and constraints clearly.
+1. The agent can summarize the idea, behavior, stack, architecture, and constraints clearly.
 2. The user confirms that summary is accurate.
 3. A plan can be created without guessing at fundamentals.
