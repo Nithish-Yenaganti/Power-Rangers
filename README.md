@@ -10,6 +10,21 @@ anti-yap-ranger/
 
 same-page/
 └── SKILL.md
+
+product-strategist/
+└── SKILL.md
+
+requirements-analyst/
+└── SKILL.md
+
+architecture-advisor/
+└── SKILL.md
+
+risk-reviewer/
+└── SKILL.md
+
+build-planner/
+└── SKILL.md
 ```
 
 No scripts, references, assets, or extra config files are required.
@@ -39,25 +54,35 @@ The goal is useful work per token.
 
 ## Same Page
 
-`same-page` is for clarification-first planning before implementation.
+`same-page` is the orchestrator for idea-to-product alignment before implementation.
 
-Use it when the user has an idea but the requirements are not clear enough to build yet.
+Use it when the user has an idea but the strategy, requirements, architecture, risks, or plan are not clear enough to build yet.
 
-It helps align on:
+It coordinates these specialist lenses:
 
-- problem and target user
-- desired behavior
-- scope and non-goals
-- stack and runtime
-- architecture and system boundaries
-- risks and unknowns
-- execution plan
+- `product-strategist` - is this idea worth building?
+- `requirements-analyst` - what exactly are we building?
+- `architecture-advisor` - how should it be built?
+- `risk-reviewer` - what can go wrong?
+- `build-planner` - how do we execute?
 
-This skill intentionally slows down implementation at the start so the agent does not build the wrong thing.
+This setup intentionally slows down implementation at the start so the agent does not build the wrong thing, change route mid-build, or damage the codebase with unstable requirements.
+
+## Specialist Skills
+
+`product-strategist` checks the customer, pain, alternatives, differentiation, value capture, and success metrics.
+
+`requirements-analyst` turns the idea into v1 scope, user flows, non-goals, edge cases, and acceptance criteria.
+
+`architecture-advisor` recommends stack, runtime, data model, integrations, system boundaries, and maintainability tradeoffs.
+
+`risk-reviewer` identifies assumptions, failure modes, security/privacy issues, adoption risk, maintainability risk, and route-change risk.
+
+`build-planner` creates the phased implementation route after alignment is complete.
 
 ## Compatibility
 
-Both skills follow the shared Claude/Codex-friendly structure:
+All skills follow the shared Claude/Codex-friendly structure:
 
 - folder name matches `name`
 - file is named `SKILL.md`
@@ -77,6 +102,16 @@ Zip the skill folders so they are inside the archive:
 power-rangers-skills.zip
 ├── anti-yap-ranger/
 │   └── SKILL.md
+├── product-strategist/
+│   └── SKILL.md
+├── requirements-analyst/
+│   └── SKILL.md
+├── architecture-advisor/
+│   └── SKILL.md
+├── risk-reviewer/
+│   └── SKILL.md
+├── build-planner/
+│   └── SKILL.md
 └── same-page/
     └── SKILL.md
 ```
@@ -95,14 +130,14 @@ Personal install:
 
 ```sh
 mkdir -p ~/.claude/skills
-cp -R anti-yap-ranger same-page ~/.claude/skills/
+cp -R anti-yap-ranger same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.claude/skills/
 ```
 
 Project install:
 
 ```sh
 mkdir -p .claude/skills
-cp -R anti-yap-ranger same-page .claude/skills/
+cp -R anti-yap-ranger same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner .claude/skills/
 ```
 
 Restart Claude Code, then ask:
@@ -117,10 +152,10 @@ Install in your Codex skills directory:
 
 ```sh
 mkdir -p ~/.codex/skills
-cp -R anti-yap-ranger same-page ~/.codex/skills/
+cp -R anti-yap-ranger same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.codex/skills/
 ```
 
-Restart Codex so it reloads available skills. If your Codex client uses a repo-local skill directory, copy both folders there instead.
+Restart Codex so it reloads available skills. If your Codex client uses a repo-local skill directory, copy the skill folders there instead.
 
 ## ChatGPT.com Fallback
 
@@ -139,7 +174,7 @@ Be concise and high-density. Skip filler, preambles, prompt mirroring, and unnec
 Compact Same Page instruction:
 
 ```text
-Before implementation, align on requirements, scope, constraints, stack, architecture, risks, and execution plan. Do not write code until the idea is concrete enough to build without guessing at fundamentals.
+Before implementation, orchestrate product strategy, requirements, architecture, risk review, and build planning. Do not write code until the idea is concrete enough to build without guessing at fundamentals.
 ```
 
 ## Testing
@@ -159,6 +194,14 @@ I want to build an app for managing invoices. Help me figure out the plan.
 ```
 
 Expected behavior: clarification and alignment before implementation.
+
+Specialist trigger test:
+
+```text
+Is my invoice app idea worth building for freelance designers?
+```
+
+Expected behavior: product strategy analysis before requirements or code.
 
 ## Notes
 
