@@ -1,13 +1,12 @@
 # PowerRangers Skills
 
-This repository contains Claude/Codex-compatible Agent Skills. Each skill is a folder with a `SKILL.md` file containing YAML frontmatter and Markdown instructions.
+PowerRangers is a Claude/Codex-compatible skill set for turning an idea into a product plan before implementation begins.
+
+The goal is to keep agents from rushing into code with unclear requirements, weak assumptions, unstable architecture, or a build route that will need to be changed halfway through.
 
 ## Skills
 
 ```text
-anti-yap-ranger/
-└── SKILL.md
-
 same-page/
 └── SKILL.md
 
@@ -29,34 +28,9 @@ build-planner/
 
 No scripts, references, assets, or extra config files are required.
 
-## Anti-Yap Ranger
+## Same Page System
 
-`anti-yap-ranger` is for concise, high-signal responses.
-
-Use it when the task benefits from:
-
-- terse summaries
-- answer-first output
-- token-efficient coding loops
-- concise debugging updates
-- direct comparisons
-- RAG/search synthesis
-
-It does not mean "short at all costs." The skill prioritizes:
-
-1. Correctness and verified facts
-2. User actionability
-3. Professional clarity
-4. Necessary context, risks, and next steps
-5. Brevity
-
-The goal is useful work per token.
-
-## Same Page
-
-`same-page` is the orchestrator for idea-to-product alignment before implementation.
-
-Use it when the user has an idea but the strategy, requirements, architecture, risks, or plan are not clear enough to build yet.
+`same-page` is the orchestrator. Use it when the user has an idea but the strategy, requirements, architecture, risks, or execution route are not clear enough to build safely.
 
 It coordinates these specialist lenses:
 
@@ -66,11 +40,11 @@ It coordinates these specialist lenses:
 - `risk-reviewer` - what can go wrong?
 - `build-planner` - how do we execute?
 
-This setup intentionally slows down implementation at the start so the agent does not build the wrong thing, change route mid-build, or damage the codebase with unstable requirements.
+The system is intentionally alignment-first: understand the product, validate assumptions, choose a stable route, then plan implementation.
 
 ## Specialist Skills
 
-`product-strategist` checks the customer, pain, alternatives, differentiation, value capture, and success metrics.
+`product-strategist` checks customer, pain, alternatives, differentiation, value capture, and success metrics.
 
 `requirements-analyst` turns the idea into v1 scope, user flows, non-goals, edge cases, and acceptance criteria.
 
@@ -78,7 +52,7 @@ This setup intentionally slows down implementation at the start so the agent doe
 
 `risk-reviewer` identifies assumptions, failure modes, security/privacy issues, adoption risk, maintainability risk, and route-change risk.
 
-`build-planner` creates the phased implementation route after alignment is complete.
+`build-planner` creates the phased implementation route after strategy, requirements, architecture, and risks are aligned.
 
 ## Compatibility
 
@@ -88,7 +62,7 @@ All skills follow the shared Claude/Codex-friendly structure:
 - file is named `SKILL.md`
 - YAML frontmatter includes `name` and `description`
 - names use lowercase letters and hyphens
-- descriptions are under 200 characters for Claude.ai upload compatibility
+- descriptions are under 200 characters
 - body uses plain Markdown
 - instructions and examples are included
 
@@ -100,7 +74,7 @@ Zip the skill folders so they are inside the archive:
 
 ```text
 power-rangers-skills.zip
-├── anti-yap-ranger/
+├── same-page/
 │   └── SKILL.md
 ├── product-strategist/
 │   └── SKILL.md
@@ -110,9 +84,7 @@ power-rangers-skills.zip
 │   └── SKILL.md
 ├── risk-reviewer/
 │   └── SKILL.md
-├── build-planner/
-│   └── SKILL.md
-└── same-page/
+└── build-planner/
     └── SKILL.md
 ```
 
@@ -130,14 +102,14 @@ Personal install:
 
 ```sh
 mkdir -p ~/.claude/skills
-cp -R anti-yap-ranger same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.claude/skills/
+cp -R same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.claude/skills/
 ```
 
 Project install:
 
 ```sh
 mkdir -p .claude/skills
-cp -R anti-yap-ranger same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner .claude/skills/
+cp -R same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner .claude/skills/
 ```
 
 Restart Claude Code, then ask:
@@ -152,7 +124,7 @@ Install in your Codex skills directory:
 
 ```sh
 mkdir -p ~/.codex/skills
-cp -R anti-yap-ranger same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.codex/skills/
+cp -R same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.codex/skills/
 ```
 
 Restart Codex so it reloads available skills. If your Codex client uses a repo-local skill directory, copy the skill folders there instead.
@@ -165,27 +137,13 @@ ChatGPT.com does not install `SKILL.md` folders as native Agent Skills in the sa
 - Project Instructions
 - Custom GPT instructions
 
-Compact Anti-Yap instruction:
-
-```text
-Be concise and high-density. Skip filler, preambles, prompt mirroring, and unnecessary caveats. Spend tokens on accuracy, verification, and actionable output. Keep reasoning internal. Ask only when a wrong assumption would be costly. Put final results before explanation.
-```
-
-Compact Same Page instruction:
+Compact instruction:
 
 ```text
 Before implementation, orchestrate product strategy, requirements, architecture, risk review, and build planning. Do not write code until the idea is concrete enough to build without guessing at fundamentals.
 ```
 
 ## Testing
-
-Anti-Yap Ranger trigger test:
-
-```text
-Compare REST and GraphQL. Keep it practical.
-```
-
-Expected behavior: compact answer, likely bullets or a table, no filler intro.
 
 Same Page trigger test:
 
