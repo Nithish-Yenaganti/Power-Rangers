@@ -7,44 +7,27 @@ description: "Use after strategy, requirements, architecture, and risks are alig
 
 ## Instructions
 
-Use this skill only after the idea, requirements, architecture, and major risks are aligned.
+Plan the build only after strategy, requirements, architecture, and risks are clear. Make the path small, sequenced, testable, and hard to derail. Do not create a giant roadmap. Do not start with polish. Start with the smallest useful proof.
 
-Act like a senior delivery planner. Create a stable path to implementation without rushing into code.
-
-## Plan
-
-- phases
-- sequencing
-- dependencies
-- milestones
-- validation points
-- test strategy
-- rollout path
-- rollback or course-correction points
-- what to defer
-
-## Decision Rules
-
-- Start with the smallest useful version.
-- Validate riskiest assumptions before heavy buildout.
-- Keep changes staged and reviewable.
-- Avoid plans that require large irreversible rewrites.
-- Include checkpoints where the user can change direction safely.
-- Do not start implementation unless the user asks for it.
+Each phase must have a purpose, exit check, and rollback point. Defer anything that does not validate the product, reduce risk, or unlock the next phase.
 
 ## Output
 
-Produce:
+Produce an **Execution Plan**:
 
-- phase plan
-- task sequence
+- phase
+- goal
+- tasks
 - dependencies
-- validation per phase
+- validation check
+- tests
 - risks carried forward
-- implementation readiness statement
+- rollback or course-correction point
+- deferred work
+- readiness verdict
 
 ## Examples
 
 ```text
-Phase 1: data model and invoice creation flow. Validate by creating, editing, and exporting one invoice. Defer payments until invoice workflow proves useful.
+Phase 1: create invoice draft flow. Exit check: user can create, edit, save, and export one valid invoice.
 ```

@@ -7,44 +7,26 @@ description: "Use before committing to a product or build plan: identify assumpt
 
 ## Instructions
 
-Use this skill to find what could go wrong before planning or building.
+Look for the failure before it becomes expensive. Be blunt, not dramatic. Rank what can kill the product, delay the build, expose users, raise cost, or force a route change. Separate discomfort from danger.
 
-Act like a skeptical but constructive reviewer. The goal is not fear; the goal is fewer surprises.
-
-## Review
-
-- product-market risk
-- unclear requirements
-- invalid assumptions
-- adoption friction
-- security and privacy risks
-- regulatory or compliance exposure
-- scalability and cost risks
-- maintainability risks
-- migration complexity
-- codebase damage risk
-- route-change risk
-
-## Decision Rules
-
-- Rank risks by likelihood and impact.
-- Separate blockers from manageable risks.
-- Do not bury a serious risk to keep momentum.
-- Recommend validation steps for high-risk assumptions.
-- Prefer reversible steps when uncertainty is high.
+Do not bury serious risks under optimism. Do not list generic risks. Tie every risk to this product, this user, this architecture, or this rollout.
 
 ## Output
 
-Produce:
+Produce a **Risk Register**:
 
-- top risks
-- why each risk matters
-- severity
-- mitigation or validation
-- go/no-go concern, if any
+- risk
+- why it matters
+- likelihood
+- impact
+- early warning sign
+- mitigation
+- validation step
+- owner or decision needed
+- verdict: `blocker`, `watch`, or `accepted`
 
 ## Examples
 
 ```text
-High risk: payment and tax assumptions are unclear. Mitigation: defer payment collection in v1 and support invoice export first, unless payments are central to validation.
+Blocker: payment flow is undefined. Mitigation: defer payments or define provider, fees, refunds, and tax handling before build.
 ```

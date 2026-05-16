@@ -7,84 +7,32 @@ description: "Use to orchestrate idea-to-product alignment before code: coordina
 
 ## Instructions
 
-Use this skill when the user has an idea and needs guidance before implementation.
+Run the room before code starts. Your job is to stop drift, expose weak assumptions, and turn a loose idea into a buildable product route. Do not implement while fundamentals are unclear.
 
-Act as the orchestrator. Do not try to carry every detail yourself. Apply the needed specialist lens:
+Use the right lens at the right time:
 
-1. `product-strategist` - is this idea worth building?
-2. `requirements-analyst` - what exactly are we building?
-3. `architecture-advisor` - how should it be built?
-4. `risk-reviewer` - what can go wrong?
-5. `build-planner` - how do we execute?
+- `product-strategist`: should this exist?
+- `requirements-analyst`: what exactly ships in v1?
+- `architecture-advisor`: what build shape survives?
+- `risk-reviewer`: what can break the plan?
+- `build-planner`: what is the execution path?
 
-Skills may not literally import each other. If a specialist skill is available, use it. If not, apply that lens from the checklist below.
+Do not interrogate. Synthesize, challenge, decide, and ask only questions that change the route.
 
-Do not write code, edit files, or run implementation commands while alignment is incomplete.
+## Output
 
-## Orchestration Flow
+Produce an **Alignment Packet**:
 
-```pseudo
-idea = clarify_user_idea()
-
-apply product-strategist until:
-  customer, value, alternatives, and success criteria are clear
-
-apply requirements-analyst until:
-  v1 scope, non-goals, flows, edge cases, and acceptance criteria are clear
-
-apply architecture-advisor until:
-  stack, data model, boundaries, integrations, and constraints are clear
-
-apply risk-reviewer until:
-  key assumptions, failure modes, and mitigations are explicit
-
-if user confirms alignment:
-  apply build-planner
-else:
-  resolve_open_questions()
-```
-
-## Hard Rules
-
-- No implementation before alignment.
-- Ask targeted questions only when ambiguity changes strategy, scope, UX, data model, architecture, or rollout.
-- Make synthesis attempts instead of interrogating endlessly.
-- Distinguish facts, assumptions, hypotheses, and recommendations.
-- Verify current facts when decisions depend on market, regulatory, pricing, platform, or library information.
-- Protect the codebase with staged, reversible build routes.
-
-## Alignment Summary
-
-Before planning, summarize:
-
-- objective
-- target user
-- business case
-- v1 scope
-- non-goals
-- key requirements
-- architecture direction
-- assumptions and risks
-- open questions
-
-Ask the user to confirm or correct the summary.
-
-## Exit Condition
-
-This skill is complete when:
-
-1. The idea, customer, business case, requirements, architecture, risks, and constraints are clear.
-2. The user confirms the alignment summary.
-3. A build plan can be created without guessing at fundamentals or changing route mid-build.
+- product thesis
+- requirements contract
+- architecture decision
+- risk register
+- execution plan
+- open decisions
+- confirmation request
 
 ## Examples
 
 ```text
-User: I want to build an app for invoices.
-Agent: Let's get on the same page before code. First lens: product strategy. Who is the first real user, what invoice pain are they feeling, and what do they use today?
-```
-
-```text
-User: I already know the idea. Plan it.
-Agent: I can plan it after a quick alignment pass: v1 scope, core flow, architecture constraints, and top risks. Then I will produce the build sequence.
+Before code, we need one clean route: customer, v1 workflow, architecture, risks, and phase-one proof.
 ```

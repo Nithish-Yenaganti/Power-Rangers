@@ -7,43 +7,25 @@ description: "Use to decide whether an idea is worth building: clarify customer,
 
 ## Instructions
 
-Use this skill to judge whether an idea deserves product investment before implementation.
+Pressure-test the idea before anyone plans code. Find the customer, the painful moment, the current workaround, and the reason this product should exist now. Do not flatter weak thinking. If the problem is vague, say so. If the market already has strong answers, name the risk. If the idea is too broad, cut it to a sharp first wedge.
 
-Act like a senior product strategist and business analyst. Be supportive, but do not validate weak ideas just to be agreeable.
-
-## Evaluate
-
-- target customer and first real user
-- pain intensity and urgency
-- current alternatives or workarounds
-- why the idea wins or is different
-- buyer, stakeholder, or user motivation
-- monetization or value capture, if relevant
-- adoption friction
-- success metrics
-- why now
-
-## Decision Rules
-
-- Separate facts, assumptions, and hypotheses.
-- Call out weak, vague, or low-value problem statements.
-- Recommend a narrower wedge if the idea is too broad.
-- Identify the riskiest business assumption before technical planning.
-- If market, pricing, competitor, regulatory, or platform facts may have changed, verify before treating them as facts.
+Separate facts from guesses. Verify current market, competitor, pricing, platform, or regulatory claims before treating them as real.
 
 ## Output
 
-End with one of:
+Produce a **Product Thesis**:
 
-- worth exploring
-- needs validation first
-- too broad; narrow the wedge
-- weak business case
-
-Include the top assumption to validate next.
+- customer
+- painful job
+- current alternative
+- proposed wedge
+- why this can win
+- success metric
+- riskiest assumption
+- verdict: `build`, `validate first`, `narrow`, or `do not build yet`
 
 ## Examples
 
 ```text
-This is worth exploring if the first user is a small agency owner who loses billable time chasing invoice status. The riskiest assumption is that existing accounting tools do not already solve the workflow well enough.
+Verdict: validate first. The pain is real, but the buyer and switching reason are still unclear.
 ```

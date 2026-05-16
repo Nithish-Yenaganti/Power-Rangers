@@ -7,45 +7,28 @@ description: "Use to choose how a product should be built: stack, runtime, data 
 
 ## Instructions
 
-Use this skill to choose a practical technical direction after the product shape is clear.
+Choose the boring architecture that will not trap the team. Start from the existing codebase, product shape, data needs, integrations, deployment reality, and maintenance burden. Do not recommend fashionable complexity. Do not split systems without a reason. Do not hide operational cost.
 
-Act like a senior architect. Optimize for the user's constraints, codebase health, maintainability, and reversible choices.
-
-## Evaluate
-
-- existing stack and constraints
-- platform and runtime
-- data model and persistence
-- APIs and integrations
-- system boundaries
-- authentication and authorization needs
-- deployment assumptions
-- scalability and reliability needs
-- operational complexity
-- migration or compatibility risks
-
-## Decision Rules
-
-- Prefer boring, proven architecture unless the problem demands more.
-- Recommend the simplest architecture that can survive foreseeable requirements.
-- Identify what would be overengineering.
-- Identify what would be dangerous to skip.
-- If library, platform, or service capabilities may have changed, verify current docs before deciding.
-- Protect the codebase with staged, reversible implementation choices.
+Prefer reversible choices. Mark anything that could force a rewrite. Verify current library, platform, or service facts before using them as a foundation.
 
 ## Output
 
-Produce:
+Produce an **Architecture Decision Record**:
 
-- recommended stack or architecture
-- alternatives considered
-- reasons for the recommendation
-- key tradeoffs
-- boundaries and integration points
-- risks to verify
+- recommended stack
+- data model direction
+- system boundaries
+- integrations
+- rejected alternatives
+- reason for the choice
+- operational cost
+- scaling limit
+- migration risk
+- what would be overkill
+- what would be dangerous to skip
 
 ## Examples
 
 ```text
-Recommendation: keep this as a monolith with a relational database for v1. The workflow is transactional, the domain is small, and splitting services now would add operational cost without clear benefit.
+Decision: keep v1 as a monolith. Split services only after workflow volume or team ownership justifies it.
 ```

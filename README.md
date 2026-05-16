@@ -1,8 +1,8 @@
 # PowerRangers Skills
 
-PowerRangers is a Claude/Codex-compatible skill set for turning an idea into a product plan before implementation begins.
+PowerRangers is a Claude/Codex-compatible skill set for turning an idea into product decisions before implementation begins.
 
-The goal is to keep agents from rushing into code with unclear requirements, weak assumptions, unstable architecture, or a build route that will need to be changed halfway through.
+The goal is to stop agents from rushing into code with unclear requirements, weak assumptions, unstable architecture, or a build route that will collapse halfway through.
 
 ## Skills
 
@@ -30,7 +30,7 @@ No scripts, references, assets, or extra config files are required.
 
 ## Same Page System
 
-`same-page` is the orchestrator. Use it when the user has an idea but the strategy, requirements, architecture, risks, or execution route are not clear enough to build safely.
+`same-page` is the orchestrator. It forces one clean route before code: product thesis, requirements contract, architecture decision, risk register, and execution plan.
 
 It coordinates these specialist lenses:
 
@@ -40,19 +40,19 @@ It coordinates these specialist lenses:
 - `risk-reviewer` - what can go wrong?
 - `build-planner` - how do we execute?
 
-The system is intentionally alignment-first: understand the product, validate assumptions, choose a stable route, then plan implementation.
+The system is alignment-first: understand the product, challenge the weak parts, choose a stable route, then plan implementation.
 
 ## Specialist Skills
 
-`product-strategist` checks customer, pain, alternatives, differentiation, value capture, and success metrics.
+`product-strategist` produces a **Product Thesis**: customer, pain, wedge, success metric, and verdict.
 
-`requirements-analyst` turns the idea into v1 scope, user flows, non-goals, edge cases, and acceptance criteria.
+`requirements-analyst` produces a **Requirements Contract**: v1 scope, user flow, entities, non-goals, and acceptance criteria.
 
-`architecture-advisor` recommends stack, runtime, data model, integrations, system boundaries, and maintainability tradeoffs.
+`architecture-advisor` produces an **Architecture Decision Record**: stack, boundaries, tradeoffs, scaling limits, and migration risk.
 
-`risk-reviewer` identifies assumptions, failure modes, security/privacy issues, adoption risk, maintainability risk, and route-change risk.
+`risk-reviewer` produces a **Risk Register**: blockers, warnings, mitigations, validation steps, and accepted risks.
 
-`build-planner` creates the phased implementation route after strategy, requirements, architecture, and risks are aligned.
+`build-planner` produces an **Execution Plan**: phases, dependencies, validation checks, tests, rollback points, and deferred work.
 
 ## Compatibility
 

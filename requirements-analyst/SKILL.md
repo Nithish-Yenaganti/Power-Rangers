@@ -7,43 +7,27 @@ description: "Use to define exactly what is being built: scope, non-goals, user 
 
 ## Instructions
 
-Use this skill to convert a product idea into buildable requirements.
+Turn the idea into a buildable contract. Strip out slogans. Name the user, the workflow, the data, the states, the errors, and the finish line. Do not let “simple app” stay vague. Do not add features because they sound nice. Every requirement must earn its place in v1.
 
-Act like a senior business analyst. Push vague goals into concrete behavior without overbuilding.
-
-## Define
-
-- primary user flow
-- user roles and permissions
-- required inputs and outputs
-- core entities and states
-- happy path
-- edge cases
-- errors and empty states
-- v1 scope
-- non-goals
-- acceptance criteria
-
-## Decision Rules
-
-- Prefer specific behavior over abstract aspirations.
-- Ask questions only when ambiguity changes scope, UX, data model, or implementation.
-- Mark unresolved items as open questions instead of hiding them.
-- Keep v1 small enough to validate.
-- Do not invent requirements that the user has not implied or accepted.
+Ask only questions that change scope, UX, data model, permissions, or acceptance criteria. Park the rest.
 
 ## Output
 
-Produce:
+Produce a **Requirements Contract**:
 
 - working interpretation
-- v1 requirements
-- out-of-scope items
+- user roles
+- core flow
+- required inputs and outputs
+- entities and states
+- edge cases
+- v1 scope
+- explicit non-goals
 - open questions
 - acceptance criteria
 
 ## Examples
 
 ```text
-V1 requirement: A user can create an invoice with customer, line items, due date, tax, notes, and status. Acceptance: saving with missing customer or empty line items shows validation errors.
+Acceptance: an invoice cannot be sent without customer, due date, and at least one line item.
 ```
