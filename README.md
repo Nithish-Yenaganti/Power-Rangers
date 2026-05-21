@@ -1,15 +1,12 @@
 # PowerRangers Skills
 
-PowerRangers is a Claude/Codex-compatible skill set for turning an idea into product decisions before implementation begins.
+PowerRangers is a Claude/Codex-compatible skill set for turning rough ideas into product decisions before implementation begins.
 
-The goal is to stop agents from rushing into code with unclear requirements, weak assumptions, unstable architecture, or a build route that will collapse halfway through.
+The goal is simple: no code before the idea survives strategy, requirements, architecture, risk, and execution planning.
 
 ## Skills
 
 ```text
-same-page/
-└── SKILL.md
-
 product-strategist/
 └── SKILL.md
 
@@ -26,23 +23,21 @@ build-planner/
 └── SKILL.md
 ```
 
-No scripts, references, assets, or extra config files are required.
+No orchestrator skill is included. Skills do not reliably import or call other skills, so each skill stands alone and triggers from its own description.
 
-## Same Page System
+## Recommended Sequence
 
-`same-page` is the orchestrator. It forces one clean route before code: product thesis, requirements contract, architecture decision, risk register, and execution plan.
+Use the skills in this order when shaping a product:
 
-It coordinates these specialist lenses:
+1. `product-strategist` - decide whether the idea is worth building.
+2. `requirements-analyst` - define exactly what ships in v1.
+3. `architecture-advisor` - choose the build shape that will not trap the team.
+4. `risk-reviewer` - expose what can break the product or plan.
+5. `build-planner` - create the execution route after alignment.
 
-- `product-strategist` - is this idea worth building?
-- `requirements-analyst` - what exactly are we building?
-- `architecture-advisor` - how should it be built?
-- `risk-reviewer` - what can go wrong?
-- `build-planner` - how do we execute?
+The agent may skip ahead only when earlier decisions are already clear.
 
-The system is alignment-first: understand the product, challenge the weak parts, choose a stable route, then plan implementation.
-
-## Specialist Skills
+## Skill Outputs
 
 `product-strategist` produces a **Product Thesis**: customer, pain, wedge, success metric, and verdict.
 
@@ -64,7 +59,7 @@ All skills follow the shared Claude/Codex-friendly structure:
 - names use lowercase letters and hyphens
 - descriptions are under 200 characters
 - body uses plain Markdown
-- instructions and examples are included
+- instructions, output format, and examples are included
 
 ## Install
 
@@ -74,8 +69,6 @@ Zip the skill folders so they are inside the archive:
 
 ```text
 power-rangers-skills.zip
-├── same-page/
-│   └── SKILL.md
 ├── product-strategist/
 │   └── SKILL.md
 ├── requirements-analyst/
@@ -102,14 +95,14 @@ Personal install:
 
 ```sh
 mkdir -p ~/.claude/skills
-cp -R same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.claude/skills/
+cp -R product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.claude/skills/
 ```
 
 Project install:
 
 ```sh
 mkdir -p .claude/skills
-cp -R same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner .claude/skills/
+cp -R product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner .claude/skills/
 ```
 
 Restart Claude Code, then ask:
@@ -124,7 +117,7 @@ Install in your Codex skills directory:
 
 ```sh
 mkdir -p ~/.codex/skills
-cp -R same-page product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.codex/skills/
+cp -R product-strategist requirements-analyst architecture-advisor risk-reviewer build-planner ~/.codex/skills/
 ```
 
 Restart Codex so it reloads available skills. If your Codex client uses a repo-local skill directory, copy the skill folders there instead.
@@ -140,26 +133,34 @@ ChatGPT.com does not install `SKILL.md` folders as native Agent Skills in the sa
 Compact instruction:
 
 ```text
-Before implementation, orchestrate product strategy, requirements, architecture, risk review, and build planning. Do not write code until the idea is concrete enough to build without guessing at fundamentals.
+Before implementation, move through product strategy, requirements, architecture, risk review, and build planning. Do not write code until the idea is concrete enough to build without guessing at fundamentals.
 ```
 
 ## Testing
 
-Same Page trigger test:
-
-```text
-I want to build an app for managing invoices. Help me figure out the plan.
-```
-
-Expected behavior: clarification and alignment before implementation.
-
-Specialist trigger test:
+Product strategy trigger:
 
 ```text
 Is my invoice app idea worth building for freelance designers?
 ```
 
-Expected behavior: product strategy analysis before requirements or code.
+Expected behavior: a Product Thesis with a verdict and riskiest assumption.
+
+Requirements trigger:
+
+```text
+Define v1 requirements for an invoice app for freelance designers.
+```
+
+Expected behavior: a Requirements Contract with scope, non-goals, and acceptance criteria.
+
+Build planning trigger:
+
+```text
+Plan the implementation after strategy, requirements, architecture, and risks are aligned.
+```
+
+Expected behavior: an Execution Plan with phases, validation checks, and rollback points.
 
 ## Notes
 
