@@ -4,6 +4,10 @@ PowerRangers is a Claude/Codex-compatible skill set for turning rough ideas into
 
 The goal is simple: no code before the idea survives strategy, requirements, architecture, risk, and execution planning.
 
+## Repository Status
+
+This is a reusable skill-pack repository. It is intentionally small: the primary source files are the `SKILL.md` instructions in each skill folder.
+
 ## Skills
 
 ```text
